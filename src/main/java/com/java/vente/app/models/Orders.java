@@ -1,15 +1,15 @@
 package com.java.vente.app.models;
 
-
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Date;
 
 @Data
 @NoArgsConstructor
 @Entity
-@Table(name="orders")
+@Table(name = "orders")
 public class Orders {
 
     @Id
@@ -19,15 +19,17 @@ public class Orders {
     private Double quantity;
     private Double total_price;
     private Double order_code;
-    private Double order_date;
 
-    @ManyToMany
-    @JoinColumn(name = "customer_id" , nullable = false)
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date order_date;
+
+    @ManyToOne
+    @JoinColumn(name = "customer_id", nullable = false)
     private Customers customer_code;
 
-    @ManyToMany
-    @JoinColumn(name = "item_id" , nullable = false)
-    private Customers item_code;
+    @ManyToOne
+    @JoinColumn(name = "item_id", nullable = false)
+    private Items item_code;
 
     public Long getOrder_id() {
         return order_id;
@@ -61,11 +63,11 @@ public class Orders {
         this.order_code = order_code;
     }
 
-    public Double getOrder_date() {
+    public Date getOrder_date() {
         return order_date;
     }
 
-    public void setOrder_date(Double order_date) {
+    public void setOrder_date(Date order_date) {
         this.order_date = order_date;
     }
 
@@ -77,11 +79,11 @@ public class Orders {
         this.customer_code = customer_code;
     }
 
-    public Customers getItem_code() {
+    public Items getItem_code() {
         return item_code;
     }
 
-    public void setItem_code(Customers item_code) {
+    public void setItem_code(Items item_code) {
         this.item_code = item_code;
     }
 }

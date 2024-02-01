@@ -4,17 +4,15 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Date;
-
-
-
 
 @Data
 @NoArgsConstructor
 @Entity
 @Table(name="items")
 public class Items {
-
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -24,7 +22,7 @@ public class Items {
     private String item_name;
     private String item_code;
     private Date last_re_stock;
-    private Double  price;
+    private Double price;
     private Double stock;
 
     public Long getItem_id() {
@@ -35,7 +33,7 @@ public class Items {
         this.item_id = item_id;
     }
 
-    public String getIs_available() {
+    public boolean isIs_available() {
         return is_available;
     }
 
@@ -54,24 +52,23 @@ public class Items {
     public String getItem_code() {
         return item_code;
     }
-    public boolean getIs_available(boolean is_available) {
-        return is_available;
-    }
 
     public void setItem_code(String item_code) {
         this.item_code = item_code;
     }
 
-    public String getLast_re_stock() {
-        return last_re_stock;
+    public Serializable getLast_re_stock() {
+        // Convert Date to String using SimpleDateFormat
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        return last_re_stock != null ? dateFormat.format(last_re_stock) : null;
     }
-
     public void setLast_re_stock(Date last_re_stock) {
         this.last_re_stock = last_re_stock;
     }
 
     public String getPrice() {
-        return price;
+        return String.valueOf(price);
+
     }
 
     public void setPrice(Double price) {
@@ -79,12 +76,9 @@ public class Items {
     }
 
     public String getStock() {
-        return stock;
+        return String.valueOf(stock);
     }
-
     public void setStock(Double stock) {
         this.stock = stock;
     }
-
-
 }

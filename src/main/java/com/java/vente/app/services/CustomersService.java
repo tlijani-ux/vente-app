@@ -34,7 +34,7 @@ public class CustomersService {
             c.setCustomer_name(customersDTO.getCustomer_name());
             c.setCustomer_code(customersDTO.getCustomer_code());
             c.setCustomer_address(customersDTO.getCustomer_address());
-            c.setIs_active(customersDTO.getIs_active());
+            c.setIs_active(String.valueOf(customersDTO.getIs_active()));
             c.setLast_order_date(customersDTO.getLast_order_date());
             c.setPic((customersDTO.getPic()));
             return convertToDTO(customersRepository.save(c));
@@ -64,7 +64,8 @@ public class CustomersService {
         customer.setCustomer_code(customerDTO.getCustomer_code());
         customer.setCustomer_name(customerDTO.getCustomer_name());
         customer.setCustomer_phone(customerDTO.getCustomer_phone());
-        customer.setIs_active(customerDTO.getIs_active());
+        customer.setIs_active(String.valueOf(customerDTO.getIs_active()));
+
         customer.setLast_order_date(customerDTO.getLast_order_date());
         customer.setPic(customerDTO.getPic());
         return customer;

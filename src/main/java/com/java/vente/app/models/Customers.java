@@ -20,7 +20,7 @@ public class Customers {
     private String customer_name;
     private String customer_address;
     private String customer_phone;
-    private String is_active;
+    private Boolean  is_active;
     private Date last_order_date;
     private String pic;
 
@@ -61,7 +61,7 @@ public class Customers {
     }
 
     public void setIs_active(String is_active) {
-        this.is_active = is_active;
+        this.is_active = Boolean.valueOf(is_active);
     }
 
     public Date getLast_order_date() {
@@ -86,5 +86,10 @@ public class Customers {
 
     public void setPic(String pic) {
         this.pic = pic;
+    }
+
+
+    public Long getItem_id() {
+        return null;
     }
 }

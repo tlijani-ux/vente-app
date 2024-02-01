@@ -68,7 +68,7 @@ public class CustomersDTO {
         this.customer_phone = customer_phone;
     }
 
-    public String getIs_active() {
+    public @NotNull(message = "Is active flag is required") Boolean getIs_active() {
         return is_active;
     }
 

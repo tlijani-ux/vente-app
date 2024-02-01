@@ -2,6 +2,7 @@ package com.java.vente.app.DTO;
 
 
 import com.java.vente.app.models.Customers;
+import com.java.vente.app.models.Items;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;
@@ -32,8 +33,7 @@ public class OrdersDTO {
     @NotNull(message = "Customer code cannot be null")
     private Customers customer_code;
 
-    @NotNull(message = "Item code cannot be null")
-    private Customers item_code;
+    private Items item_code;
 
     private List<ItemsDTO> items;
 
@@ -77,11 +77,11 @@ public class OrdersDTO {
         this.customer_code = customer_code;
     }
 
-    public Customers getItem_code() {
+    public Items getItem_code() {
         return item_code;
     }
 
-    public void setItem_code(Customers item_code) {
+    public void setItem_code(Items item_code) {
         this.item_code = item_code;
     }
 
